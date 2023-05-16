@@ -1,6 +1,8 @@
-# printrbot-skr3
+# Printrbot-skr3
+* Printrbot Simple Metal
+* Originally with REV F board
 
-PrintrBot Simple Metal with Heated bed
+# PrintrBot Simple Metal with Heated bed
 
 * Marlin 2.1.2
 * BTT SKR MINI E3 V2
