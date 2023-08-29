@@ -7,7 +7,7 @@
 * Marlin 2.1.2
 * BTT SKR MINI E3 V2
 * BTT TFT24 v1.1
-* BLtouch
+* Inductive Probe
 
 ## WIRING
 
