@@ -100,6 +100,8 @@
 #define E0_DRIVER_TYPE TMC2208 // MODIFIED
 
 
+// Supress warning:
+#define DIAG_JUMPERS_REMOVED
 /**
  * Additional Axis Settings
  *
@@ -957,7 +959,7 @@
 
 
 #define USE_ZMIN_PLUG  // MODIFIED
-#define USE_YMAX_PLUG  // MODIFIED
+#define USE_YMIN_PLUG  // MODIFIED
 #define USE_XMAX_PLUG  // MODIFIED
 //#define USE_IMIN_PLUG
 //#define USE_JMIN_PLUG
@@ -1051,8 +1053,8 @@
 #define Z_MIN_ENDSTOP_INVERTING true  // MODIFIED
 #define X_MAX_ENDSTOP_INVERTING false // MODIFIED
 #define Y_MAX_ENDSTOP_INVERTING false // MODIFIED
-#define Z_MAX_ENDSTOP_INVERTING false // MODIFIED
-#define Z_MIN_PROBE_ENDSTOP_INVERTING false  // MODIFIED
+#define Z_MAX_ENDSTOP_INVERTING true // MODIFIED
+#define Z_MIN_PROBE_ENDSTOP_INVERTING true  // MODIFIED
 
 // Enable this feature if all enabled endstop pins are interrupt-capable.
 // This will remove the need to poll the interrupt pins, saving many CPU cycles.
@@ -1101,7 +1103,7 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 500 }
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 2020, 94.5 }  // MODIFIED
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 311.17, 4040, 97 }  // MODIFIED
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
@@ -1109,7 +1111,8 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 // #define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 25 }
-#define DEFAULT_MAX_FEEDRATE          { 150, 150, 7, 40 } // MODIFIED
+// define DEFAULT_MAX_FEEDRATE          { 150, 150, 7, 40 } // MODIFIED
+#define DEFAULT_MAX_FEEDRATE          { 600, 600, 10, 50 }  // MODIFIED
 
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
@@ -1124,7 +1127,9 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 // #define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 100, 10000 }
-#define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 100, 10000 }  // MODIFIED
+// #define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 100, 10000 }  // MODIFIED
+#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 100, 10000 }  // MODIFIED
+
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -1230,7 +1235,8 @@
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
  */
-//#define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default
+#define Z_MIN_PROBE_PIN PA1 // Pin 32 is the RAMPS default
+
 
 /**
  * Probe Type
@@ -1250,7 +1256,7 @@
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
  *   (e.g., an inductive probe or a nozzle-based probe-switch.)
  */
-//#define FIX_MOUNTED_PROBE
+#define FIX_MOUNTED_PROBE //MODIFIED
 
 /**
  * Use the nozzle as the probe, as with a conductive
@@ -1267,7 +1273,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-#define BLTOUCH   // MODIFIED
+// #define BLTOUCH 
 
 /**
  * MagLev V4 probe by MDD
@@ -1577,9 +1583,10 @@
 // @section motion
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR true // MODIFIED
+#define INVERT_X_DIR false
 #define INVERT_Y_DIR true
 #define INVERT_Z_DIR true // MODIFIED
+
 //#define INVERT_I_DIR false
 //#define INVERT_J_DIR false
 //#define INVERT_K_DIR false
@@ -1590,7 +1597,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR false
+#define INVERT_E0_DIR true //modified
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
@@ -1618,8 +1625,8 @@
 
 // Direction of endstops when homing; 1=MAX, -1=MIN
 // :[-1,1]
-#define X_HOME_DIR 1 // MODIFIED
-#define Y_HOME_DIR 1 // MODIFIED
+#define X_HOME_DIR 1 
+#define Y_HOME_DIR -1 // MODIFIED
 #define Z_HOME_DIR -1
 //#define I_HOME_DIR -1
 //#define J_HOME_DIR -1
