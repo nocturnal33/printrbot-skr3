@@ -959,8 +959,8 @@
 
 
 #define USE_ZMIN_PLUG  // MODIFIED
-#define USE_YMIN_PLUG  // MODIFIED
-#define USE_XMAX_PLUG  // MODIFIED
+#define USE_YMAX_PLUG  // MODIFIED
+#define USE_XMIN_PLUG  // MODIFIED
 //#define USE_IMIN_PLUG
 //#define USE_JMIN_PLUG
 //#define USE_KMIN_PLUG
@@ -1049,11 +1049,14 @@
 // #define Z_MIN_PROBE_ENDSTOP_INVERTING false // Set to true to invert the logic of the probe.
 
 #define X_MIN_ENDSTOP_INVERTING false // MODIFIED 
-#define Y_MIN_ENDSTOP_INVERTING false // MODIFIED
-#define Z_MIN_ENDSTOP_INVERTING true  // MODIFIED
 #define X_MAX_ENDSTOP_INVERTING false // MODIFIED
+
+#define Y_MIN_ENDSTOP_INVERTING false // MODIFIED
 #define Y_MAX_ENDSTOP_INVERTING false // MODIFIED
+
 #define Z_MAX_ENDSTOP_INVERTING true // MODIFIED
+#define Z_MIN_ENDSTOP_INVERTING true  // MODIFIED
+
 #define Z_MIN_PROBE_ENDSTOP_INVERTING true  // MODIFIED
 
 // Enable this feature if all enabled endstop pins are interrupt-capable.
@@ -1103,7 +1106,9 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 500 }
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 311.17, 4040, 97 }  // MODIFIED
+// 79.43 is perfect for X. Z worked well with 4040 but was a little too many steps
+// Y and E are fluctuating
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 79.43, 315.68, 3953.76, 94.17 }  // MODIFIED
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
@@ -1156,7 +1161,7 @@
  * When changing speed and direction, if the difference is less than the
  * value set here, it may happen instantaneously.
  */
-//#define CLASSIC_JERK
+#define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
   #define DEFAULT_XJERK 10.0
   #define DEFAULT_YJERK 10.0
@@ -1426,7 +1431,7 @@
  *     O-- FRONT --+
  */
 // #define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0 }
-#define NOZZLE_TO_PROBE_OFFSET { -28, 8, 0 }  // MODIFIED
+#define NOZZLE_TO_PROBE_OFFSET { 25, 1, -1.3 }  // MODIFIED
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1436,7 +1441,7 @@
 #define XY_PROBE_FEEDRATE (133*60)
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
-#define Z_PROBE_FEEDRATE_FAST (4*60)
+#define Z_PROBE_FEEDRATE_FAST (4*60) // MODIFIED (4*60)
 
 // Feedrate (mm/min) for the "accurate" probe of each point
 #define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 2)
@@ -1583,8 +1588,8 @@
 // @section motion
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR false
-#define INVERT_Y_DIR true
+#define INVERT_X_DIR true
+#define INVERT_Y_DIR false
 #define INVERT_Z_DIR true // MODIFIED
 
 //#define INVERT_I_DIR false
@@ -1625,8 +1630,8 @@
 
 // Direction of endstops when homing; 1=MAX, -1=MIN
 // :[-1,1]
-#define X_HOME_DIR 1 
-#define Y_HOME_DIR -1 // MODIFIED
+#define X_HOME_DIR -1 
+#define Y_HOME_DIR  1 
 #define Z_HOME_DIR -1
 //#define I_HOME_DIR -1
 //#define J_HOME_DIR -1
@@ -1639,7 +1644,7 @@
 
 // The size of the printable area
 #define X_BED_SIZE 152  // MODIFIED
-#define Y_BED_SIZE 149  // MODIFIED
+#define Y_BED_SIZE 152  // MODIFIED
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1826,8 +1831,8 @@
  * these options to restore the prior leveling state or to always enable
  * leveling immediately after G28.
  */
-#define RESTORE_LEVELING_AFTER_G28  // MODIFIED
-//#define ENABLE_LEVELING_AFTER_G28
+//#define RESTORE_LEVELING_AFTER_G28  // MODIFIED
+#define ENABLE_LEVELING_AFTER_G28
 
 /**
  * Auto-leveling needs preheating
@@ -2164,9 +2169,9 @@
 #define PREHEAT_1_TEMP_CHAMBER 35
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
-#define PREHEAT_2_LABEL       "ABS"
-#define PREHEAT_2_TEMP_HOTEND 240
-#define PREHEAT_2_TEMP_BED    110
+#define PREHEAT_2_LABEL       "PETG"
+#define PREHEAT_2_TEMP_HOTEND 235
+#define PREHEAT_2_TEMP_BED    75
 #define PREHEAT_2_TEMP_CHAMBER 35
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
@@ -3155,7 +3160,7 @@
 
 // Set number of user-controlled fans. Disable to use all board-defined fans.
 // :[1,2,3,4,5,6,7,8]
-//#define NUM_M106_FANS 1
+//#define NUM_M106_FANS 2 //MODIFIED
 
 // Use software PWM to drive the fan, as for the heaters. This uses a very low frequency
 // which is not as annoying as with the hardware PWM. On the other hand, if this frequency
