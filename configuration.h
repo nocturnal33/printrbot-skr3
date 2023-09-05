@@ -1106,9 +1106,8 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 500 }
-// 79.43 is perfect for X. Z worked well with 4040 but was a little too many steps
-// Y and E are fluctuating
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 79.43, 315.68, 3953.76, 94.17 }  // MODIFIED
+
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 79.43, 317.6, 3953.76, 94.17 }  // MODIFIED
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
@@ -1431,7 +1430,7 @@
  *     O-- FRONT --+
  */
 // #define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0 }
-#define NOZZLE_TO_PROBE_OFFSET { 25, 1, -1.3 }  // MODIFIED
+#define NOZZLE_TO_PROBE_OFFSET { -25, 0, -1.38 }  // MODIFIED
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
