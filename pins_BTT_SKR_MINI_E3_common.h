@@ -48,12 +48,12 @@
 //
 #define X_STOP_PIN                          PC0   // X-STOP
 #define Y_STOP_PIN                          PC1   // Y-STOP
-#define Z_STOP_PIN                          PA1 // PC2   // Z-STOP  
+#define Z_STOP_PIN                          PA1  //PA1 for BLtouch // Z-STOP  
 
 //
 // Z Probe must be this pin
 //
-#define Z_MIN_PROBE_PIN                     PA1 // PC14  // PROBE
+#define Z_MIN_PROBE_PIN                     PC2 // PC14  // PROBE
 
 //
 // Filament Runout Sensor
