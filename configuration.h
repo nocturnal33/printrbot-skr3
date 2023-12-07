@@ -1239,8 +1239,9 @@
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
  */
-#define Z_MIN_PROBE_PIN PA1 // Pin 32 is the RAMPS default
-
+// #define Z_MIN_PROBE_PIN PA1 // Pin 32 is the RAMPS default
+// Switched to this pin to be compatible with Klipper
+#define Z_MIN_PROBE_PIN PC2 // Pin 32 is the RAMPS default
 
 /**
  * Probe Type
